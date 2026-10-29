@@ -1,0 +1,12 @@
+services:
+  frontend-one:
+    build: ./web1
+    container_name: homepage1
+    ports:
+     - "8000:80"
+
+  frontend-two:
+    build: ./web2
+    container_name: hompage2
+    ports:
+     - "8001:80"

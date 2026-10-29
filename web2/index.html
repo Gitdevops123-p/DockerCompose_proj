@@ -1,0 +1,230 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project | Docker Compose</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            line-height: 1.8;
+        }
+
+        header {
+            background: #1e293b;
+            padding: 22px;
+            text-align: center;
+            color: #38bdf8;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        h1 span, h2 {
+            color: #38bdf8;
+        }
+
+        .intro {
+            color: #cbd5e1;
+            margin-bottom: 30px;
+        }
+
+        section {
+            background: #1e293b;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        pre {
+            background: #020617;
+            color: #7dd3fc;
+            padding: 18px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        ul {
+            padding-left: 25px;
+            color: #cbd5e1;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #0284c7;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Docker Compose | Project Implementation</h2>
+    </header>
+
+    <main>
+
+        <h1>Building a <span>Multi-Container Application</span></h1>
+
+        <p class="intro">
+            A practical demonstration of building and running
+            two web applications together using Docker Compose.
+        </p>
+
+        <section>
+            <h2>01. Project Objective</h2>
+
+            <p>
+                The objective of this project was to run two
+                different web applications in separate Docker
+                containers and manage both using Docker Compose.
+            </p>
+        </section>
+
+        <section>
+            <h2>02. Project Structure</h2>
+
+            <p>
+                I created two directories, web1 and web2.
+                Each directory contains an index.html file
+                and its own Dockerfile. I also created a
+                Compose YAML file in the main project directory.
+            </p>
+
+            <pre>
+My-project/
+│
+├── compose.yml
+│
+├── web1/
+│   ├── index.html
+│   └── Dockerfile
+│
+└── web2/
+    ├── index.html
+    └── Dockerfile
+            </pre>
+        </section>
+
+        <section>
+            <h2>03. Dockerfiles</h2>
+
+            <p>
+                Each Dockerfile contains the instructions
+                required to build the image for its respective
+                web application. This keeps the configuration
+                of Web1 and Web2 independent.
+            </p>
+        </section>
+
+        <section>
+            <h2>04. Compose YAML Configuration</h2>
+
+            <p>
+                In the Compose file, I defined two services
+                and specified their build directories.
+                Docker Compose uses these build contexts
+                to locate the respective Dockerfiles.
+            </p>
+
+            <pre>
+services:
+  web1:
+    build: ./web1
+    ports:
+      - "8081:80"
+
+  web2:
+    build: ./web2
+    ports:
+      - "8082:80"
+            </pre>
+
+            <p>
+                The port mappings above are examples.
+                They must match the ports configured in
+                your actual Compose file and web servers.
+            </p>
+        </section>
+
+        <section>
+            <h2>05. Build and Run</h2>
+
+            <p>From the main project directory, I executed:</p>
+
+            <pre>
+docker compose -f compose.yml up --build -d
+            </pre>
+
+            <p>
+                This command builds the images and starts
+                both services in detached mode.
+            </p>
+
+            <p>To verify the running containers:</p>
+
+            <pre>
+docker compose -f compose.yml ps
+            </pre>
+        </section>
+
+        <section>
+            <h2>06. Final Outcome</h2>
+
+            <ul>
+                <li>Created two independent web applications.</li>
+                <li>Built a separate Docker image for each application.</li>
+                <li>Configured both services in one Compose YAML file.</li>
+                <li>Started both containers using one command.</li>
+                <li>Simplified multi-container application management.</li>
+            </ul>
+        </section>
+
+        <a href="http://192.168.56.110:8000/" class="btn">
+            ← Back to Docker Compose Introduction
+        </a>
+
+    </main>
+
+    <footer>
+        Docker Compose | Multi-Container Web Application Deployment
+    </footer>
+
+</body>
+</html>
+```
